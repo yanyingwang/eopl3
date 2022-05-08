@@ -1,4 +1,6 @@
 (module store (lib "eopl.ss" "eopl")
+
+  (require racket/trace)
   
   (require "drscheme-init.scm")
    
@@ -42,7 +44,8 @@
 
   ;; newref : ExpVal -> Ref
   ;; Page: 111
-  (define newref
+
+  (trace-define newref
     (lambda (val)
       (let ((next-ref (length the-store)))
         (set! the-store

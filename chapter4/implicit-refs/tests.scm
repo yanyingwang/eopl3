@@ -123,8 +123,7 @@ in letrec even(d) = if zero?(x) then 1
                                        in (even d)
    in let d = set x = 13 in (odd -99)" 1)
 
-      (example-for-book-1 "
-let f = proc (x) proc (y) 
+      (example-for-book-1 "let f = proc (x) proc (y)
                   begin
                    set x = -(x,-1);
                    -(x,y)

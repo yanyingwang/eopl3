@@ -15,7 +15,7 @@
       (value number?))
     (bool-val
       (boolean boolean?))
-    (proc-val 
+    (proc-val
       (proc proc?)))
 
 ;;; extractors:

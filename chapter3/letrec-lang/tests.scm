@@ -81,7 +81,7 @@ in let times4 = (fix t4m)
         8)
 
       (simple-letrec-3
-        "let m = -5 
+        "let m = -5
  in letrec f(x) = if zero?(x) then 0 else -((f -(x,1)), m) in (f 4)"
         20)
       

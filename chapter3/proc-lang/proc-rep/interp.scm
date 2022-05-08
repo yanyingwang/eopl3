@@ -1,11 +1,17 @@
+
 (module interp (lib "eopl.ss" "eopl")
-  
+
+  (require racket/trace)
+  (require sugar sugar/debug)
+  (require debug/repl)
+
   ;; interpreter for the PROC language, using the procedural
   ;; representation of procedures.
 
   ;; The \commentboxes are the latex code for inserting the rules into
   ;; the code in the book. These are too complicated to put here, see
   ;; the text, sorry. 
+
 
   (require "drscheme-init.scm")
 
@@ -18,7 +24,7 @@
 ;;;;;;;;;;;;;;;; the interpreter ;;;;;;;;;;;;;;;;
 
   ;; value-of-program : Program -> ExpVal
-  (define value-of-program 
+  (define value-of-program
     (lambda (pgm)
       (cases program pgm
         (a-program (exp1)
@@ -71,6 +77,7 @@
         (call-exp (rator rand)
           (let ((proc (expval->proc (value-of rator env)))
                 (arg (value-of rand env)))
+            (debug-repl)
             (apply-procedure proc arg)))
 
         )))
@@ -81,6 +88,7 @@
   (define procedure
     (lambda (var body env)
       (lambda (val)
+        ;; (debug-repl)
         (value-of body (extend-env var val env)))))
   
   ;; apply-procedure : Proc * ExpVal -> ExpVal

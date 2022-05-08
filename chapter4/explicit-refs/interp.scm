@@ -2,6 +2,8 @@
   
   ;; interpreter for the EXPLICIT-REFS language
 
+  (require sugar/debug debug/repl racket/trace)
+
   (require "drscheme-init.scm")
 
   (require "lang.scm")
@@ -22,7 +24,7 @@
 
   ;; value-of-program : Program -> ExpVal
   ;; Page: 110
-  (define value-of-program 
+  (define value-of-program
     (lambda (pgm)
       (initialize-store!)               ; new for explicit refs.
       (cases program pgm

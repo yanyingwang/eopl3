@@ -1,8 +1,14 @@
 (module interp (lib "eopl.ss" "eopl")
-  
+
+  (require racket/trace)
+  (require sugar sugar/debug)
+  (require debug/repl)
+
+
   ;; interpreter for the LETREC language.  The \commentboxes are the
   ;; latex code for inserting the rules into the code in the book.
   ;; These are too complicated to put here, see the text, sorry.
+
 
   (require "drscheme-init.scm")
 
@@ -72,8 +78,8 @@
             (apply-procedure proc arg)))
 
         (letrec-exp (p-name b-var p-body letrec-body)
-          (value-of letrec-body
-            (extend-env-rec p-name b-var p-body env)))
+                    (value-of letrec-body
+                              (extend-env-rec p-name b-var p-body env)))
 
         )))
 
